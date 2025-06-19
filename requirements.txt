@@ -1,0 +1,5 @@
+wordfreq>=2.5.1
+genanki>=0.13.1
+deep-translator>=1.11.4
+tqdm>=4.66.1
+tabulate>=0.9.0
