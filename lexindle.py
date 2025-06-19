@@ -313,7 +313,7 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     dest_db_path = os.path.join(script_dir, dest_db_filename)
 
-    source_db_path = find_db_in_script_folder("Testing/1vocab.db")
+    source_db_path = find_db_in_script_folder("vocab.db")
     if not source_db_path:
         print("❌ Kindle DB not found in the script folder. Exiting.")
         return
