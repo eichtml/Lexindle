@@ -333,11 +333,11 @@ def main():
             include_all = False
             print(
                 "\nZipf frequency categories:\n"
-                "Very rare: Zipf < 3\n"
-                "Rare: 3 ≤ Zipf < 5\n"
-                "Uncommon: 5 ≤ Zipf < 6\n"
-                "Common: 6 ≤ Zipf < 7\n"
-                "Very common: Zipf ≥ 7\n"
+                "Very rare: Zipf < 3.0\n"
+                "Rare: 3.0 ≤ Zipf < 4.0\n"
+                "Uncommon: 4.0 ≤ Zipf < 5.0\n"
+                "Common: 5.0 ≤ Zipf < 6.0\n"
+                "Very common: 6.0 ≤ Zipf ≤ 7.0+\n"
             )
             while True:
                 try:
