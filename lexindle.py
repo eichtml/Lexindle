@@ -165,9 +165,15 @@ def print_stats(kept_words, discarded_words):
         title2="Words discarded"
     )
 
-
-    input("\nPress Enter to continue and select the translation language...")
-
+def confirm_before_saving():
+    while True:
+        choice = input("\nDo you want to save these words and continue? [s] Save and continue / [e] Exit: ").strip().lower()
+        if choice == 's':
+            return True
+        elif choice == 'e':
+            return False
+        else:
+            print("❌ Invalid option. Type 's' to save and continue, or 'e' to exit.")
 
 def add_or_update_word_with_contexts(conn, word, lang, new_contexts):
     word = word.lower()
@@ -228,7 +234,6 @@ def update_vocab_db(dest_db_path, source_db_path, zipf_threshold=3.0, include_al
             if changed:
                 words_to_update.append(word)
 
-    print_stats(kept_words, discarded_words)
     return words_to_update
 
 def generate_note_id(word):
@@ -347,6 +352,13 @@ def main():
             break
         else:
             print("❌ Invalid option. Use 'a' for all words or 'f' for filtering.")
+
+    kept_words, discarded_words = extract_words_with_context(source_db_path, zipf_threshold, include_all)
+    print_stats(kept_words, discarded_words)
+
+    if not confirm_before_saving():
+        print("❎ Exiting without saving.")
+        return
 
     words_to_update = update_vocab_db(dest_db_path, source_db_path, zipf_threshold, include_all)
     target_lang = choose_translation_language()
