@@ -115,7 +115,7 @@ If you approach this limit:
 
 To **reset** the vocabulary database and free up space for new words, follow these steps:
 
-You can perform these steps with Wi-Fi enabled. Apparently, Amazon has the latest version of the database stored on the cloud, so if you don’t have Wi-Fi enabled, the cloud version is never updated and might be reloaded in case the Kindle cannot find the database or in other situations. Therefore, I recommend keeping Wi-Fi and sync enabled to ensure that the cloud version is also overwritten.
+You can perform these steps with Wi-Fi enabled. Apparently, Amazon has the latest version of the database stored on the cloud. Therefore, I recommend keeping Wi-Fi and sync enabled to ensure that the cloud version is also overwritten..or maybe not. I tried deregistering my Amazon account, but the words came back after logging in again. So apparently, this method doesn't overwrite what's stored in the cloud. However, if you never delete the file and only overwrite it, you should be able to keep the vocabulary clean.
 > ⚠️**Note:** I only tested with Wi-Fi and Sync enabled.  
 
 
@@ -130,6 +130,9 @@ You can perform these steps with Wi-Fi enabled. Apparently, Amazon has the lates
 DELETE FROM LOOKUPS;
 DELETE FROM WORDS;
 DELETE FROM BOOK_INFO;
+```
+After that click on **Write Changes** and execute the following query
+```
 VACUUM;
 ```
 - Save the changes, eject the Kindle safely, and restart your Kindle to finalize the reset.
