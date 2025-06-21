@@ -112,15 +112,28 @@ pip install -r requirements.txt
 Your Kindle can store **a maximum of about 2000 vocabulary words**.  
 
 If you approach this limit:  
-- It's a good idea to **copy the `vocab.db` file to your computer** regularly to save your vocabulary progress.  
-- Then, **delete the `vocab.db` file from your Kindle** to reset the vocabulary database and free up space for new words.  
 
+To **reset** the vocabulary database and free up space for new words, follow these steps:
 
-To restore the vocabulary database on your Kindle:  
-- Simply **create a new empty file named `vocab.db`** in the same folder on your Kindle.  
-- **Restart your Kindle** to generate a fresh vocabulary database.
+- Download and install an SQL editor, such as [DB Browser for SQLite](https://sqlitebrowser.org/).
 
-This way, you can keep collecting new words without losing old data saved on your computer.
+- Connect your Kindle to your computer via USB.
+
+- Navigate to the Kindle directory, locate the `vocab.db` file (usually found in `system/vocabulary`), and open it with the SQL editor.
+
+- In the editor, execute the following SQL queries to clear the vocabulary data:
+```
+DELETE FROM LOOKUPS;
+DELETE FROM WORDS;
+DELETE FROM BOOK_INFO;
+```
+- Save the changes, eject the Kindle safely, and restart your Kindle to finalize the reset.
+
+You can perform these steps with Wi-Fi enabled, but to prevent Amazon’s cloud from restoring previously synced words, it’s recommended to complete all the steps before turning Wi-Fi back on.
+> ⚠️**Note:** I only tested with Wi-Fi and Sync enabled.
+> If deleted words reappear after rebooting, try adding a new word to the dictionary before restarting your Kindle.  
+> **Tip:** Always double-check the file after rebooting to ensure the operation was successful.  
+> **Additional Note:** You might still see some entries in the `LOOKUPS` table. If that happens, try adding those words manually to the Vocabulary Builder and then deleting them from there.
 
 
 ## 🚀 Future Developments
@@ -128,3 +141,6 @@ This way, you can keep collecting new words without losing old data saved on you
 - Translation powered by **Gemini AI** for more accurate and context-aware results.  
 - **Statistics and analytics** on the words stored in your own vocabulary database (`db_lexindle.db`).
 
+## ❤️ Support Me
+
+If you found this tool helpful, you can buy me a Kinder Bueno here: [PayPal.me](https://www.paypal.com/paypalme/alessandropalma101)
