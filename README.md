@@ -115,6 +115,10 @@ If you approach this limit:
 
 To **reset** the vocabulary database and free up space for new words, follow these steps:
 
+You can perform these steps with Wi-Fi enabled. Apparently, Amazon has the latest version of the database stored on the cloud, so if you don’t have Wi-Fi enabled, the cloud version is never updated and might be reloaded in case the Kindle cannot find the database or in other situations. Therefore, I recommend keeping Wi-Fi and sync enabled to ensure that the cloud version is also overwritten.
+> ⚠️**Note:** I only tested with Wi-Fi and Sync enabled.  
+
+
 - Download and install an SQL editor, such as [DB Browser for SQLite](https://sqlitebrowser.org/).
 
 - Connect your Kindle to your computer via USB.
@@ -126,15 +130,9 @@ To **reset** the vocabulary database and free up space for new words, follow the
 DELETE FROM LOOKUPS;
 DELETE FROM WORDS;
 DELETE FROM BOOK_INFO;
+VACUUM;
 ```
 - Save the changes, eject the Kindle safely, and restart your Kindle to finalize the reset.
-
-You can perform these steps with Wi-Fi enabled, but to prevent Amazon’s cloud from restoring previously synced words, it’s recommended to complete all the steps before turning Wi-Fi back on.
-> ⚠️**Note:** I only tested with Wi-Fi and Sync enabled.
-> If deleted words reappear after rebooting, try adding a new word to the dictionary before restarting your Kindle.  
-> **Tip:** Always double-check the file after rebooting to ensure the operation was successful.  
-> **Additional Note:** You might still see some entries in the `LOOKUPS` table. If that happens, try adding those words manually to the Vocabulary Builder and then deleting them from there.
-
 
 ## 🚀 Future Developments
 - Integration with the **KOReader** vocabulary database.
